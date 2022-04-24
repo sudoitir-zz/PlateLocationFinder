@@ -9,6 +9,7 @@
 - You can use the Core in other frameworks or Android
 - JAVA 17
 - Modular
+- Swagger 3
 - PostgreSQL Database
 
 ## API Reference
