@@ -7,22 +7,24 @@ Business logic implemented at the core can be tested.<br>
 This method causes parallel development, which increases the speed of development.
   </p>
 
-## Features
+
+<h3 align="left">Features</h3>
 
 - JAVA 17
 - Modular
 - Swagger 3
 - PostgreSQL Database
 
-## API Reference
+<h3 align="left">API Reference</h3>
 
-### Swagger
+
+<h4 align="left">Swagger</h4>
 
 ```http
   http://localhost:8080/api/v1/swagger-ui.html
 ```
 
-#### Create items
+<h4 align="left">Create items</h4>
 
 ```http
   POST /api/v1/plate/create-plate
@@ -35,13 +37,14 @@ This method causes parallel development, which increases the speed of developmen
 
 
 
-#### Get all items
+<h4 align="left">Get all items</h4>
 
 ```http
   GET /api/v1/plate/get-all-plate-list
 ```
 
-#### Find plate from number
+
+<h4 align="left">Find plate from number</h4>
 
 ```http
   GET /api/v1/plate/get-state/${number}
