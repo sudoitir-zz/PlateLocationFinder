@@ -2,8 +2,6 @@
 # Spring Boot Clean Architecture Sample- Iran Plate Location Finder
 
 
-
-
 ## Features
 
 - Use Clean architecture 
@@ -47,6 +45,3 @@
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `number`  | `Integer`| **Required And Unique**           |
-
-
-![counter](https://github.com/sudoitir/IranVehicleNumberPlateLocationFinder.m.pipedream.net)
