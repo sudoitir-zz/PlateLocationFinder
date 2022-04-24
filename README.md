@@ -8,23 +8,23 @@ This method causes parallel development, which increases the speed of developmen
   </p>
 
 
-<h3 align="left">Features</h3>
+<h2 align="left">Features</h2>
 
 - JAVA 17
 - Modular
 - Swagger 3
 - PostgreSQL Database
 
-<h3 align="left">API Reference</h3>
+<h2 align="left">API Reference</h2>
 
 
-<h4 align="left">Swagger</h4>
+<h3 align="left">Swagger</h3>
 
 ```http
   http://localhost:8080/api/v1/swagger-ui.html
 ```
 
-<h4 align="left">Create items</h4>
+<h3 align="left">Create items</h3>
 
 ```http
   POST /api/v1/plate/create-plate
@@ -37,14 +37,14 @@ This method causes parallel development, which increases the speed of developmen
 
 
 
-<h4 align="left">Get all items</h4>
+<h3 align="left">Get all items</h3>
 
 ```http
   GET /api/v1/plate/get-all-plate-list
 ```
 
 
-<h4 align="left">Find plate from number</h4>
+<h3 align="left">Find plate from number</h3>
 
 ```http
   GET /api/v1/plate/get-state/${number}
