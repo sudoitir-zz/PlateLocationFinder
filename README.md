@@ -1,12 +1,13 @@
 
 # Spring Boot Clean Architecture Sample- Iran Plate Location Finder
 
+I used the Clean Architecture in my project. In this way we can develop our project without considering any framework or database.
+The core module has no dependency on the spring framework so we can use it on Android or Other frameworks.
+Business logic implemented at the core can be tested.
+This method causes parallel development, which increases the speed of development.
 
 ## Features
 
-- Use Clean architecture 
-- Separation of core(Without using the spring framework) and infrastructure(Spring Boot)
-- You can use the Core in other frameworks or Android
 - JAVA 17
 - Modular
 - Swagger 3
