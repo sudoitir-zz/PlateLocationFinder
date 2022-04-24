@@ -7,7 +7,8 @@
 ## Features
 
 - Use Clean architecture 
-- Separation of core(Pure Java) and infrastructure(Spring Boot)
+- Separation of core(Without using the spring framework) and infrastructure(Spring Boot)
+- You can use the Core in other frameworks or Android
 
 
 ## API Reference
