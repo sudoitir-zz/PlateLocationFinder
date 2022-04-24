@@ -1,10 +1,10 @@
-<h1 align="center">Spring Boot Clean Architecture Sample- Iran Plate Location Finder</h1>
+<h1 align="center">Spring Boot Clean Architecture Sample<br>Iran Plate Location Finder</h1>
 
 <p align="left"> 
-I used the Clean Architecture in my project. In this way we can develop our project without considering any framework or database.\d
-The core module has no dependency on the spring framework so we can use it on Android or Other frameworks.\d
-Business logic implemented at the core can be tested.\d
-This method causes parallel development, which increases the speed of development.\d
+I used the Clean Architecture in my project. In this way we can develop our project without considering any framework or database.<br>
+The core module has no dependency on the spring framework so we can use it on Android or Other frameworks.<br>
+Business logic implemented at the core can be tested.<br>
+This method causes parallel development, which increases the speed of development.
   </p>
 
 ## Features
