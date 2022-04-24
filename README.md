@@ -7,6 +7,8 @@
 - Use Clean architecture 
 - Separation of core(Without using the spring framework) and infrastructure(Spring Boot)
 - You can use the Core in other frameworks or Android
+- JAVA 17
+- Modular
 - PostgreSQL Database
 
 ## API Reference
