@@ -6012,3 +6012,4 @@ org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique co
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.60.jar:9.0.60]
 	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
 
+24-04-2022 11:03:29:04  INFO 5044 --- [http-nio-8080-exec-7] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 125 ms

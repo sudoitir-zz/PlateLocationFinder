@@ -18,7 +18,7 @@ public interface PlateController {
     @GetMapping(path = "get-all-plate-list")
     List<PlateRest> getAllPlateList() throws GlobalException;
 
-    @PostMapping(path = "creat-plate")
+    @PostMapping(path = "create-plate")
     ResponseEntity createPlateList(@RequestBody List<PlateRest> category, BindingResult bindingResult) throws GlobalException;
 
     @GetMapping (path = "get-state/{number}")
