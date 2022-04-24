@@ -1,0 +1,161 @@
+Index: Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/responses/GlobalResponse.java
+===================================================================
+diff --git a/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/responses/GlobalResponse.java b/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/responses/GlobalResponse.java
+deleted file mode 100644
+--- a/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/responses/GlobalResponse.java	(revision 33dc683780a11fa6730f3a17655a635285321c28)
++++ /dev/null	(revision 33dc683780a11fa6730f3a17655a635285321c28)
+@@ -1,65 +0,0 @@
+-package ir.sudoit.infrastructure.delivery.responses;
+-
+-import java.io.Serial;
+-import java.io.Serializable;
+-
+-public class GlobalResponse<T> implements Serializable {
+-
+-    @Serial
+-    private static final long serialVersionUID = -4213981265089990408L;
+-    private String status;
+-    private String code;
+-    private String message;
+-    private T data;
+-
+-
+-    public GlobalResponse() {
+-        super();
+-    }
+-
+-    public GlobalResponse(String status, String code, String message) {
+-        this.status = status;
+-        this.code = code;
+-        this.message = message;
+-    }
+-
+-    public GlobalResponse(String status, String code, String message, T data) {
+-        this.status = status;
+-        this.code = code;
+-        this.message = message;
+-        this.data = data;
+-    }
+-
+-    public String getStatus() {
+-        return this.status;
+-    }
+-
+-    public void setStatus(String status) {
+-        this.status = status;
+-    }
+-
+-    public String getCode() {
+-        return this.code;
+-    }
+-
+-    public void setCode(String code) {
+-        this.code = code;
+-    }
+-
+-    public String getMessage() {
+-        return this.message;
+-    }
+-
+-    public void setMessage(String message) {
+-        this.message = message;
+-    }
+-
+-    public T getData() {
+-        return data;
+-    }
+-
+-    public void setData(T data) {
+-        this.data = data;
+-    }
+-
+-}
+\ No newline at end of file
+Index: Infrastructure/src/main/resources/application-dev.properties
+===================================================================
+diff --git a/Infrastructure/src/main/resources/application-dev.properties b/Infrastructure/src/main/resources/application-dev.properties
+deleted file mode 100644
+--- a/Infrastructure/src/main/resources/application-dev.properties	(revision 33dc683780a11fa6730f3a17655a635285321c28)
++++ /dev/null	(revision 33dc683780a11fa6730f3a17655a635285321c28)
+@@ -1,15 +0,0 @@
+-## PostgreSQL
+-# The SQL dialect makes Hibernate generate better SQL for the chosen database
+-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+-spring.datasource.driverClassName=org.postgresql.Driver
+-spring.datasource.url=jdbc:postgresql://localhost:5432/plate
+-spring.datasource.username=postgres
+-spring.datasource.password=123456
+-## Hibernate Properties
+-spring.jpa.show-sql=true
+-spring.jpa.hibernate.ddl-auto=update
+-#springdoc.swagger-ui.path=/api/v1/swagger-ui.html
+-#springdoc.api-docs.path=/api/v1/api-docs
+-#logging level
+-logging.file.path=Infrastructure-log
+-logging.pattern.dateformat=dd-MM-yyyy HH:mm:ss:MM
+\ No newline at end of file
+Index: Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ir.sudoit.infrastructure.delivery.controller.impl;\r\n\r\nimport ir.sudoit.core.plate.Plate;\r\nimport ir.sudoit.core.plate.usecase.GetAllPlateUseCase;\r\nimport ir.sudoit.core.plate.usecase.PlateProvinceFinderUseCase;\r\nimport ir.sudoit.core.plate.usecase.UpdateUseCase;\r\nimport ir.sudoit.infrastructure.delivery.controller.PlateController;\r\nimport ir.sudoit.infrastructure.delivery.converters.PlateRestConverter;\r\nimport ir.sudoit.infrastructure.delivery.rest.PlateRest;\r\nimport ir.sudoit.infrastructure.exception.GlobalException;\r\nimport lombok.RequiredArgsConstructor;\r\nimport org.springframework.http.HttpStatus;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.validation.BindingResult;\r\nimport org.springframework.web.bind.annotation.RequestBody;\r\nimport org.springframework.web.bind.annotation.RequestMapping;\r\nimport org.springframework.web.bind.annotation.RestController;\r\nimport org.springframework.web.server.ResponseStatusException;\r\n\r\nimport javax.validation.Valid;\r\nimport java.util.List;\r\nimport java.util.stream.Collectors;\r\n\r\n@RestController\r\n@RequiredArgsConstructor\r\n@RequestMapping(path = \"api/v1/plate\")\r\npublic class PlateControllerImpl implements PlateController {\r\n\r\n    private final GetAllPlateUseCase getAllPlateUseCase;\r\n    private final PlateProvinceFinderUseCase plateProvinceFinderUseCase;\r\n    private final UpdateUseCase updateUseCase;\r\n    private final PlateRestConverter converter;\r\n\r\n\r\n\r\n\r\n    @Override\r\n    public List<PlateRest> getAllPlateList() throws GlobalException {\r\n        return getAllPlateUseCase.execute().stream().map(converter::mapToRest).collect(Collectors.toList());\r\n    }\r\n\r\n    @Override\r\n    public ResponseEntity createPlateList(@RequestBody @Valid List<PlateRest> plateRest, BindingResult bindingResult) throws GlobalException {\r\n        if (bindingResult.hasErrors()){\r\n            return ResponseEntity.badRequest().body(bindingResult);\r\n        }\r\n        plateRest.forEach(plateRest1 -> updateUseCase.execute(PlateRestConverter.INSTANCE.mapToEntity(plateRest1)))\r\n        ;\r\n        return ResponseEntity.ok(plateRest);\r\n    }\r\n\r\n    @Override\r\n    public Plate getPlateState(Integer number) throws GlobalException {\r\n        return plateProvinceFinderUseCase.execute(number).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java b/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java
+--- a/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java	(revision 33dc683780a11fa6730f3a17655a635285321c28)
++++ b/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java	(date 1650783563438)
+@@ -16,6 +16,7 @@
+ import org.springframework.web.bind.annotation.RequestMapping;
+ import org.springframework.web.bind.annotation.RestController;
+ import org.springframework.web.server.ResponseStatusException;
++import org.webjars.NotFoundException;
+ 
+ import javax.validation.Valid;
+ import java.util.List;
+@@ -51,7 +52,7 @@
+ 
+     @Override
+     public Plate getPlateState(Integer number) throws GlobalException {
+-        return plateProvinceFinderUseCase.execute(number).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
++        return plateProvinceFinderUseCase.execute(number).orElseThrow(() -> new NotFoundException("Number not found"));
+     }
+ 
+ 
+Index: Infrastructure-log/spring.log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Infrastructure-log/spring.log b/Infrastructure-log/spring.log
+--- a/Infrastructure-log/spring.log	(revision 33dc683780a11fa6730f3a17655a635285321c28)
++++ b/Infrastructure-log/spring.log	(date 1650783562591)
+@@ -6012,3 +6012,7 @@
+ 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.60.jar:9.0.60]
+ 	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+ 
++24-04-2022 11:27:33:04  WARN 5044 --- [http-nio-8080-exec-2] .w.s.m.a.ResponseStatusExceptionResolver : Resolved [org.springframework.web.server.ResponseStatusException: 404 NOT_FOUND]
++24-04-2022 11:29:22:04  INFO 5044 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
++24-04-2022 11:29:22:04  INFO 5044 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
++24-04-2022 11:29:22:04  INFO 5044 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+Index: Infrastructure/src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>spring.profiles.active=dev\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/Infrastructure/src/main/resources/application.properties b/Infrastructure/src/main/resources/application.properties
+--- a/Infrastructure/src/main/resources/application.properties	(revision 33dc683780a11fa6730f3a17655a635285321c28)
++++ b/Infrastructure/src/main/resources/application.properties	(date 1650783985346)
+@@ -1,1 +1,10 @@
+-spring.profiles.active=dev
++spring.datasource.url=jdbc:postgresql://localhost:5432/plate
++spring.datasource.username=postgres
++spring.datasource.password=123456
++spring.datasource.driverClassName=org.postgresql.Driver
++spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
++spring.jpa.hibernate.ddl-auto=create-drop
++springdoc.swagger-ui.path=/api/v1/swagger-ui.html
++springdoc.api-docs.path=/api/v1/api-docs
++logging.file.path=Infrastructure-log
++logging.pattern.dateformat=dd-MM-yyyy HH:mm:ss:MM

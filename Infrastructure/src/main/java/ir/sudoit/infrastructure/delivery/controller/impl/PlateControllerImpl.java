@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.webjars.NotFoundException;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -51,7 +52,7 @@ public class PlateControllerImpl implements PlateController {
 
     @Override
     public Plate getPlateState(Integer number) throws GlobalException {
-        return plateProvinceFinderUseCase.execute(number).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        return plateProvinceFinderUseCase.execute(number).orElseThrow(() -> new NotFoundException("Number not found"));
     }
 
 
