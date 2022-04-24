@@ -5,10 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e0b4e4d3-2823-4224-ad83-c6262bfc52e4" name="Changes" comment="First Commit">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/exception/CustomException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a395be08-0b6b-409f-a9b8-325659424ab9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a395be08-0b6b-409f-a9b8-325659424ab9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure-log/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure-log/spring.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/PlateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/PlateController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/responses/GlobalResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/resources/application-dev.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/exception/BadRequestException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/exception/GlobalException.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/exception/GlobalException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/exception/NotFoundException.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,7 +39,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JpbToolWindowState">
@@ -52,6 +65,13 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
   <component name="ProjectId" id="280O8rwr89Br5OsGx2sUcJ2oJ2K" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -60,33 +80,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DtoCreateDialog.USE_JAVA_RECORDS_INITIAL_PROP_KEY": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "jdk.selected.JAVA_MODULE": "17",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
-    "spring.configuration.checksum": "cba4f4cee5c6a3e6d8be8da68fa1234e"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DtoCreateDialog.USE_JAVA_RECORDS_INITIAL_PROP_KEY&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.CommitDialog&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;cba4f4cee5c6a3e6d8be8da68fa1234e&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="InfrastructureApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Infrastructure" />
@@ -107,6 +127,8 @@
       <workItem from="1650349882598" duration="12944000" />
       <workItem from="1650423697260" duration="24526000" />
       <workItem from="1650772395667" duration="11380000" />
+      <workItem from="1650784155770" duration="300000" />
+      <workItem from="1650785850196" duration="2428000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1650780931245</created>
