@@ -8,7 +8,7 @@ import ir.sudoit.infrastructure.delivery.controller.PlateController;
 import ir.sudoit.infrastructure.delivery.converters.PlateRestConverter;
 import ir.sudoit.infrastructure.delivery.rest.PlateRest;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,7 +23,8 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(path = "api/v1/plate")
-@Log
+@Validated
+@Slf4j
 public class PlateControllerImpl implements PlateController {
 
     private final GetAllPlateUseCase getAllPlateUseCase;
@@ -38,11 +39,12 @@ public class PlateControllerImpl implements PlateController {
     }
 
     @Override
-    public ResponseEntity createPlateList(@RequestBody @Validated List<PlateRest> plateRest) {
+    public ResponseEntity<?> createPlateList(@RequestBody @Validated List<PlateRest> plateRest) {
         try {
             plateRest.forEach(plateRest1 -> updateUseCase.execute(PlateRestConverter.INSTANCE.mapToEntity(plateRest1)));
             return ResponseEntity.ok(plateRest);
         } catch (Exception e) {
+            log.error(e.getMessage());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
         }
     }
@@ -51,6 +53,4 @@ public class PlateControllerImpl implements PlateController {
     public Plate getPlateState(Integer number) {
         return plateProvinceFinderUseCase.execute(number).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Number not found"));
     }
-
-
 }
