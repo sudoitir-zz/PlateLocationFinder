@@ -8,7 +8,7 @@ import javax.validation.constraints.NotEmpty;
 import java.util.Optional;
 
 @Repository
-public interface PlateRepository extends JpaRepository<PlateEntity, Long> {
+public interface PlateRepositoryJpa extends JpaRepository<PlateEntity, Long> {
 
     Optional<PlateEntity> findByNumber(@NotEmpty Integer number);
 

@@ -44,7 +44,6 @@ public class PlateControllerImpl implements PlateController {
             plateRest.forEach(plateRest1 -> updateUseCase.execute(PlateRestConverter.INSTANCE.mapToEntity(plateRest1)));
             return ResponseEntity.ok(plateRest);
         } catch (Exception e) {
-            log.error(e.getMessage());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
         }
     }

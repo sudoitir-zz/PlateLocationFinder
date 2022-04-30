@@ -1,0 +1,226 @@
+Index: Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ir.sudoit.infrastructure.delivery.controller.impl;\r\n\r\nimport ir.sudoit.core.plate.Plate;\r\nimport ir.sudoit.core.plate.usecase.GetAllPlateUseCase;\r\nimport ir.sudoit.core.plate.usecase.PlateProvinceFinderUseCase;\r\nimport ir.sudoit.core.plate.usecase.UpdateUseCase;\r\nimport ir.sudoit.infrastructure.delivery.controller.PlateController;\r\nimport ir.sudoit.infrastructure.delivery.converters.PlateRestConverter;\r\nimport ir.sudoit.infrastructure.delivery.rest.PlateRest;\r\nimport lombok.RequiredArgsConstructor;\r\nimport lombok.extern.java.Log;\r\nimport org.springframework.http.HttpStatus;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.validation.annotation.Validated;\r\nimport org.springframework.web.bind.annotation.RequestBody;\r\nimport org.springframework.web.bind.annotation.RequestMapping;\r\nimport org.springframework.web.bind.annotation.RestController;\r\nimport org.springframework.web.server.ResponseStatusException;\r\n\r\nimport java.util.List;\r\nimport java.util.stream.Collectors;\r\n\r\n@RestController\r\n@RequiredArgsConstructor\r\n@RequestMapping(path = \"api/v1/plate\")\r\n@Log\r\npublic class PlateControllerImpl implements PlateController {\r\n\r\n    private final GetAllPlateUseCase getAllPlateUseCase;\r\n    private final PlateProvinceFinderUseCase plateProvinceFinderUseCase;\r\n    private final UpdateUseCase updateUseCase;\r\n    private final PlateRestConverter converter;\r\n\r\n\r\n    @Override\r\n    public List<PlateRest> getAllPlateList() {\r\n        return getAllPlateUseCase.execute().stream().map(converter::mapToRest).collect(Collectors.toList());\r\n    }\r\n\r\n    @Override\r\n    public ResponseEntity createPlateList(@RequestBody @Validated List<PlateRest> plateRest) {\r\n        try {\r\n            plateRest.forEach(plateRest1 -> updateUseCase.execute(PlateRestConverter.INSTANCE.mapToEntity(plateRest1)));\r\n            return ResponseEntity.ok(plateRest);\r\n        } catch (Exception e) {\r\n            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public Plate getPlateState(Integer number) {\r\n        return plateProvinceFinderUseCase.execute(number).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, \"Number not found\"));\r\n    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java b/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java
+--- a/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java	
++++ b/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java	
+@@ -9,6 +9,7 @@
+ import ir.sudoit.infrastructure.delivery.rest.PlateRest;
+ import lombok.RequiredArgsConstructor;
+ import lombok.extern.java.Log;
++import lombok.extern.slf4j.Slf4j;
+ import org.springframework.http.HttpStatus;
+ import org.springframework.http.ResponseEntity;
+ import org.springframework.validation.annotation.Validated;
+@@ -23,7 +24,8 @@
+ @RestController
+ @RequiredArgsConstructor
+ @RequestMapping(path = "api/v1/plate")
+-@Log
++@Validated
++@Slf4j
+ public class PlateControllerImpl implements PlateController {
+ 
+     private final GetAllPlateUseCase getAllPlateUseCase;
+@@ -38,11 +40,12 @@
+     }
+ 
+     @Override
+-    public ResponseEntity createPlateList(@RequestBody @Validated List<PlateRest> plateRest) {
++    public ResponseEntity<?> createPlateList(@RequestBody @Validated List<PlateRest> plateRest) {
+         try {
+             plateRest.forEach(plateRest1 -> updateUseCase.execute(PlateRestConverter.INSTANCE.mapToEntity(plateRest1)));
+             return ResponseEntity.ok(plateRest);
+         } catch (Exception e) {
++            log.error(e.getMessage());
+             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
+         }
+     }
+@@ -51,6 +54,4 @@
+     public Plate getPlateState(Integer number) {
+         return plateProvinceFinderUseCase.execute(number).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Number not found"));
+     }
+-
+-
+ }
+Index: Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/PlateController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ir.sudoit.infrastructure.delivery.controller;\r\n\r\n\r\nimport ir.sudoit.core.plate.Plate;\r\nimport ir.sudoit.infrastructure.delivery.rest.PlateRest;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\nimport java.util.List;\r\n\r\n@RestController\r\n@RequestMapping(path = \"api/v1/plate\")\r\npublic interface PlateController {\r\n\r\n\r\n    @GetMapping(path = \"get-all-plate-list\")\r\n    List<PlateRest> getAllPlateList();\r\n\r\n    @PostMapping(path = \"create-plate\")\r\n    ResponseEntity createPlateList(@RequestBody List<PlateRest> category);\r\n\r\n    @GetMapping(path = \"get-state/{number}\")\r\n    Plate getPlateState(@PathVariable Integer number);\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/PlateController.java b/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/PlateController.java
+--- a/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/PlateController.java	
++++ b/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/PlateController.java	
+@@ -3,13 +3,16 @@
+ 
+ import ir.sudoit.core.plate.Plate;
+ import ir.sudoit.infrastructure.delivery.rest.PlateRest;
++import lombok.extern.slf4j.Slf4j;
+ import org.springframework.http.ResponseEntity;
++import org.springframework.validation.annotation.Validated;
+ import org.springframework.web.bind.annotation.*;
+ 
+ import java.util.List;
+ 
+ @RestController
+ @RequestMapping(path = "api/v1/plate")
++@Validated
+ public interface PlateController {
+ 
+ 
+@@ -17,7 +20,7 @@
+     List<PlateRest> getAllPlateList();
+ 
+     @PostMapping(path = "create-plate")
+-    ResponseEntity createPlateList(@RequestBody List<PlateRest> category);
++    ResponseEntity<?> createPlateList(@RequestBody List<PlateRest> category);
+ 
+     @GetMapping(path = "get-state/{number}")
+     Plate getPlateState(@PathVariable Integer number);
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e0b4e4d3-2823-4224-ad83-c6262bfc52e4\" name=\"Changes\" comment=\"Controller Modified\">\r\n      <change afterPath=\"$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/GetAllPlateUseCaseImplTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/PlateProvinceFinderUseCaseImplTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/UpdateImplTest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gitignore\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gitignore\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Core/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Core/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Infrastructure-log/spring.log\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Infrastructure-log/spring.log\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Enum\" />\r\n        <option value=\"com.haulmont.jpb.JpaRepository\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Record\" />\r\n        <option value=\"Class\" />\r\n        <option value=\"JUnit5 Test Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitToolBoxStore\">\r\n    <option name=\"projectConfigVersion\" value=\"5\" />\r\n  </component>\r\n  <component name=\"HighlightingSettingsPerFile\">\r\n    <setting file=\"file://$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java\" root0=\"FORCE_HIGHLIGHTING\" />\r\n    <setting file=\"file://$PROJECT_DIR$/pom.xml\" root0=\"FORCE_HIGHLIGHTING\" />\r\n  </component>\r\n  <component name=\"JpbToolWindowState\">\r\n    <option name=\"myId2FirstActivated\">\r\n      <map>\r\n        <entry key=\"com.haulmont.jpb.jpaInspector\" value=\"true\" />\r\n        <entry key=\"com.haulmont.jpb.jpaPalette\" value=\"true\" />\r\n        <entry key=\"com.haulmont.jpb.jpaStructure\" value=\"true\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"myId2Visible\">\r\n      <map>\r\n        <entry key=\"com.haulmont.jpb.jpaInspector\" value=\"false\" />\r\n        <entry key=\"com.haulmont.jpb.jpaPalette\" value=\"false\" />\r\n        <entry key=\"com.haulmont.jpb.jpaStructure\" value=\"false\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"280O8rwr89Br5OsGx2sUcJ2oJ2K\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,\r\n    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;DtoCreateDialog.USE_JAVA_RECORDS_INITIAL_PROP_KEY&quot;: &quot;true&quot;,\r\n    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,\r\n    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,\r\n    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,\r\n    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,\r\n    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.CommitDialog&quot;,\r\n    &quot;spring.configuration.checksum&quot;: &quot;cba4f4cee5c6a3e6d8be8da68fa1234e&quot;\r\n  },\r\n  &quot;keyToStringList&quot;: {\r\n    &quot;DatabaseDriversLRU&quot;: [\r\n      &quot;postgresql&quot;\r\n    ]\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"ir.sudoit.core.plate.usecase.impl\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.GetAllPlateUseCaseImplTest\">\r\n    <configuration name=\"GetAllPlateUseCaseImplTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"Core\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"ir.sudoit.core.plate.usecase.impl.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"ir.sudoit.core.plate.usecase.impl\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"ir.sudoit.core.plate.usecase.impl.GetAllPlateUseCaseImplTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"InfrastructureApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\">\r\n      <module name=\"Infrastructure\" />\r\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"ir.sudoit.infrastructure.InfrastructureApplication\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.GetAllPlateUseCaseImplTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e0b4e4d3-2823-4224-ad83-c6262bfc52e4\" name=\"Changes\" comment=\"\" />\r\n      <created>1650349879932</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1650349879932</updated>\r\n      <workItem from=\"1650349882598\" duration=\"12944000\" />\r\n      <workItem from=\"1650423697260\" duration=\"24526000\" />\r\n      <workItem from=\"1650772395667\" duration=\"11380000\" />\r\n      <workItem from=\"1650784155770\" duration=\"300000\" />\r\n      <workItem from=\"1650785850196\" duration=\"4911000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"First Commit\">\r\n      <created>1650780931245</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650780931245</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Controller Modified\">\r\n      <created>1650789450439</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1650789450440</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"3\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"First Commit\" />\r\n    <MESSAGE value=\"Controller Modified\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Controller Modified\" />\r\n    <option name=\"OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT\" value=\"true\" />\r\n    <option name=\"REARRANGE_BEFORE_PROJECT_COMMIT\" value=\"true\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/usecase/impl/UpdateImpl.java</url>\r\n          <line>10</line>\r\n          <option name=\"timeStamp\" value=\"3\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\r\n    <SUITE FILE_PATH=\"coverage/IranVehicleNumberPlateLocationFinder$InfrastructureApplication.ic\" NAME=\"InfrastructureApplication Coverage Results\" MODIFIED=\"1650441651952\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,14 +4,12 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="e0b4e4d3-2823-4224-ad83-c6262bfc52e4" name="Changes" comment="Controller Modified">
+-      <change afterPath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/GetAllPlateUseCaseImplTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/PlateProvinceFinderUseCaseImplTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/UpdateImplTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
++    <list default="true" id="e0b4e4d3-2823-4224-ad83-c6262bfc52e4" name="Changes" comment="No Desc">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Core/pom.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/Infrastructure-log/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure-log/spring.log" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/PlateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/PlateController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/persistence/converter/PlateRepositoryConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/persistence/converter/PlateRepositoryConverter.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -74,35 +72,36 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;DtoCreateDialog.USE_JAVA_RECORDS_INITIAL_PROP_KEY&quot;: &quot;true&quot;,
+-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.CommitDialog&quot;,
+-    &quot;spring.configuration.checksum&quot;: &quot;cba4f4cee5c6a3e6d8be8da68fa1234e&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "ASKED_ADD_EXTERNAL_FILES": "true",
++    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "DtoCreateDialog.USE_JAVA_RECORDS_INITIAL_PROP_KEY": "true",
++    "RequestMappingsPanelOrder0": "0",
++    "RequestMappingsPanelOrder1": "1",
++    "RequestMappingsPanelWidth0": "75",
++    "RequestMappingsPanelWidth1": "75",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
++    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
++    "ignore.preview.features.used": "true",
++    "jdk.selected.JAVA_MODULE": "17",
++    "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Project",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.0",
++    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
++    "spring.configuration.checksum": "cba4f4cee5c6a3e6d8be8da68fa1234e"
+   },
+-  &quot;keyToStringList&quot;: {
+-    &quot;DatabaseDriversLRU&quot;: [
+-      &quot;postgresql&quot;
++  "keyToStringList": {
++    "DatabaseDriversLRU": [
++      "postgresql"
+     ]
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
+     <key name="CreateTestDialog.Recents.Supers">
+       <recent name="" />
+@@ -152,7 +151,8 @@
+       <workItem from="1650423697260" duration="24526000" />
+       <workItem from="1650772395667" duration="11380000" />
+       <workItem from="1650784155770" duration="300000" />
+-      <workItem from="1650785850196" duration="4911000" />
++      <workItem from="1650785850196" duration="5994000" />
++      <workItem from="1650861946785" duration="3800000" />
+     </task>
+     <task id="LOCAL-00001" summary="First Commit">
+       <created>1650780931245</created>
+@@ -168,7 +168,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1650789450440</updated>
+     </task>
+-    <option name="localTasksCounter" value="3" />
++    <task id="LOCAL-00003" summary="No Desc">
++      <created>1650792735351</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1650792735351</updated>
++    </task>
++    <option name="localTasksCounter" value="4" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -189,20 +196,10 @@
+     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+     <MESSAGE value="First Commit" />
+     <MESSAGE value="Controller Modified" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Controller Modified" />
++    <MESSAGE value="No Desc" />
++    <option name="LAST_COMMIT_MESSAGE" value="No Desc" />
+     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+-  </component>
+-  <component name="XDebuggerManager">
+-    <breakpoint-manager>
+-      <breakpoints>
+-        <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/usecase/impl/UpdateImpl.java</url>
+-          <line>10</line>
+-          <option name="timeStamp" value="3" />
+-        </line-breakpoint>
+-      </breakpoints>
+-    </breakpoint-manager>
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+     <SUITE FILE_PATH="coverage/IranVehicleNumberPlateLocationFinder$InfrastructureApplication.ic" NAME="InfrastructureApplication Coverage Results" MODIFIED="1650441651952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

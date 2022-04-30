@@ -4,12 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0b4e4d3-2823-4224-ad83-c6262bfc52e4" name="Changes" comment="No Desc">
+    <list default="true" id="e0b4e4d3-2823-4224-ad83-c6262bfc52e4" name="Changes" comment="Some Changes in createPlateList">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/port/PlateRepositoryTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/src/test/java/ir/sudoit/infrastructure/persistence/impl/PlateServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/src/test/java/ir/sudoit/infrastructure/persistence/repository/PlateRepositoryJpaTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a395be08-0b6b-409f-a9b8-325659424ab9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a395be08-0b6b-409f-a9b8-325659424ab9.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure-log/spring.log" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure-log/spring.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/PlateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/PlateController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/port/PlateRepositoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/port/PlateRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/usecase/impl/GetAllPlateUseCaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/usecase/impl/GetAllPlateUseCaseImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/usecase/impl/PlateProvinceFinderUseCaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/usecase/impl/PlateProvinceFinderUseCaseImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/usecase/impl/UpdateImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/usecase/impl/UpdateImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/shared/SelfValidating.java" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/shared/SelfValidating.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/GetAllPlateUseCaseImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/GetAllPlateUseCaseImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/PlateProvinceFinderUseCaseImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/PlateProvinceFinderUseCaseImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/UpdateImplTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/UpdateImplTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/config/PlateConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/config/PlateConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/delivery/controller/impl/PlateControllerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/persistence/converter/PlateRepositoryConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/persistence/converter/PlateRepositoryConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/persistence/impl/PlateServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/persistence/impl/PlateImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/persistence/repository/PlateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/persistence/repository/PlateRepositoryJpa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/resources/application-dev.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/src/test/java/ir/sudoit/infrastructure/InfrastructureApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/test/java/ir/sudoit/infrastructure/InfrastructureApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +85,7 @@
   </component>
   <component name="ProjectId" id="280O8rwr89Br5OsGx2sUcJ2oJ2K" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -89,11 +109,12 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "ignore.preview.features.used": "true",
     "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "/home/sudoit/Projects/MyProjects/IranVehicleNumberPlateLocationFinder",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors.Console Font",
     "spring.configuration.checksum": "cba4f4cee5c6a3e6d8be8da68fa1234e"
   },
   "keyToStringList": {
@@ -107,10 +128,13 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="ir.sudoit.infrastructure.persistence.impl" />
+      <recent name="ir.sudoit.infrastructure.persistence.repository" />
+      <recent name="ir.sudoit.core.plate.port" />
       <recent name="ir.sudoit.core.plate.usecase.impl" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.GetAllPlateUseCaseImplTest">
+  <component name="RunManager" selected="Spring Boot.InfrastructureApplication">
     <configuration name="GetAllPlateUseCaseImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Core" />
       <extension name="coverage">
@@ -126,6 +150,70 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GetAllPlateUseCaseImplTest.data" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ir.sudoit.core.plate.usecase.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ir.sudoit.core.plate.usecase.impl" />
+      <option name="MAIN_CLASS_NAME" value="ir.sudoit.core.plate.usecase.impl.GetAllPlateUseCaseImplTest" />
+      <option name="METHOD_NAME" value="data" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GetAllPlateUseCaseImplTest.execute" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ir.sudoit.core.plate.usecase.impl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ir.sudoit.core.plate.usecase.impl" />
+      <option name="MAIN_CLASS_NAME" value="ir.sudoit.core.plate.usecase.impl.GetAllPlateUseCaseImplTest" />
+      <option name="METHOD_NAME" value="execute" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlateRepositoryJpaTest.findByNumber" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Infrastructure" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ir.sudoit.infrastructure.persistence.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ir.sudoit.infrastructure.persistence.repository" />
+      <option name="MAIN_CLASS_NAME" value="ir.sudoit.infrastructure.persistence.repository.PlateRepositoryJpaTest" />
+      <option name="METHOD_NAME" value="findByNumber" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlateRepositoryJpaTest.queryResult1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Infrastructure" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ir.sudoit.infrastructure.persistence.repository.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ir.sudoit.infrastructure.persistence.repository" />
+      <option name="MAIN_CLASS_NAME" value="ir.sudoit.infrastructure.persistence.repository.PlateRepositoryJpaTest" />
+      <option name="METHOD_NAME" value="queryResult1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="InfrastructureApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="Infrastructure" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="ir.sudoit.infrastructure.InfrastructureApplication" />
@@ -135,7 +223,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GetAllPlateUseCaseImplTest.execute" />
+        <item itemvalue="JUnit.GetAllPlateUseCaseImplTest.data" />
         <item itemvalue="JUnit.GetAllPlateUseCaseImplTest" />
+        <item itemvalue="JUnit.PlateRepositoryJpaTest.queryResult1" />
+        <item itemvalue="JUnit.PlateRepositoryJpaTest.findByNumber" />
       </list>
     </recent_temporary>
   </component>
@@ -152,7 +244,11 @@
       <workItem from="1650772395667" duration="11380000" />
       <workItem from="1650784155770" duration="300000" />
       <workItem from="1650785850196" duration="5994000" />
-      <workItem from="1650861946785" duration="3800000" />
+      <workItem from="1650861946785" duration="15515000" />
+      <workItem from="1650943545937" duration="3810000" />
+      <workItem from="1651296950709" duration="1639000" />
+      <workItem from="1651298895792" duration="527000" />
+      <workItem from="1651302235272" duration="1125000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1650780931245</created>
@@ -175,7 +271,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650792735351</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Some Changes in createPlateList">
+      <created>1650867012192</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1650867012192</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -193,15 +296,21 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CODE_SMELLS_PROFILE" value="Project Default" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="First Commit" />
     <MESSAGE value="Controller Modified" />
     <MESSAGE value="No Desc" />
-    <option name="LAST_COMMIT_MESSAGE" value="No Desc" />
+    <MESSAGE value="Some Changes in createPlateList" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some Changes in createPlateList" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/IranVehicleNumberPlateLocationFinder$InfrastructureApplicationTests_contextLoads.ic" NAME="InfrastructureApplicationTests.contextLoads Coverage Results" MODIFIED="1650871582860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ir.sudoit.infrastructure.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/IranVehicleNumberPlateLocationFinder$InfrastructureApplication.ic" NAME="InfrastructureApplication Coverage Results" MODIFIED="1650441651952" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

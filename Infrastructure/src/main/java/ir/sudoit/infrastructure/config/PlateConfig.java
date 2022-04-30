@@ -4,8 +4,8 @@ import ir.sudoit.core.plate.usecase.impl.GetAllPlateUseCaseImpl;
 import ir.sudoit.core.plate.usecase.impl.PlateProvinceFinderUseCaseImpl;
 import ir.sudoit.core.plate.usecase.impl.UpdateImpl;
 import ir.sudoit.infrastructure.persistence.converter.PlateRepositoryConverter;
-import ir.sudoit.infrastructure.persistence.impl.PlateServiceImpl;
-import ir.sudoit.infrastructure.persistence.repository.PlateRepository;
+import ir.sudoit.infrastructure.persistence.impl.PlateImpl;
+import ir.sudoit.infrastructure.persistence.repository.PlateRepositoryJpa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,13 +14,13 @@ import org.springframework.context.annotation.Configuration;
 @RequiredArgsConstructor
 public class PlateConfig {
 
-    private final PlateRepository plateRepository;
+    private final PlateRepositoryJpa plateRepositoryJpa;
     private final PlateRepositoryConverter plateRepositoryConverter;
 
 
     @Bean
-    public PlateServiceImpl plateService() {
-        return new PlateServiceImpl(plateRepository, plateRepositoryConverter);
+    public PlateImpl plateService() {
+        return new PlateImpl(plateRepositoryJpa, plateRepositoryConverter);
     }
 
 

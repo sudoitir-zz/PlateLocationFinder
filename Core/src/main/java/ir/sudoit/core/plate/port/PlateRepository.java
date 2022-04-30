@@ -5,7 +5,7 @@ import ir.sudoit.core.plate.Plate;
 import java.util.Collection;
 import java.util.Optional;
 
-public interface PlateRepositoryService {
+public interface PlateRepository {
 
    Collection<Plate> getAllPlate();
 
