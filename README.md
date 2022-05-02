@@ -7,7 +7,7 @@ Business logic implemented at the core can be tested.<br>
 This method causes parallel development, which increases the speed of development.
   </p>
   
-![lbexLhWvRfpexSV0lSIWczkHd5KdszeDy9a3](https://user-images.githubusercontent.com/87154763/166200317-ad9a9298-9a17-4aa0-b2dd-356f78078b70.png)
+  <img src="![lbexLhWvRfpexSV0lSIWczkHd5KdszeDy9a3](https://user-images.githubusercontent.com/87154763/166200317-ad9a9298-9a17-4aa0-b2dd-356f78078b70.png)" alt="Spring Boot Clean Architecture Sample" class="center">
 
 
 <h2 align="left">Features</h2>
