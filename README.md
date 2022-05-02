@@ -52,6 +52,6 @@ This method causes parallel development, which increases the speed of developmen
   GET /api/v1/plate/get-state/${number}
 ```
 
-| Parameter | Type     | Description                       |
+| Variable  | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
 | `number`  | `Integer`| **Required And Unique**           |
