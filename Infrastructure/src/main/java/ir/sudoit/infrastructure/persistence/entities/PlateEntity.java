@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 
 @Entity(name = "Plate")
-@Table(name = "plate",uniqueConstraints = {@UniqueConstraint(name = "ht_plate_unique", columnNames = {"number"})})
+@Table(name = "plate", uniqueConstraints = {@UniqueConstraint(name = "ht_plate_unique", columnNames = {"number"})})
 @Setter
 @Getter
 @NoArgsConstructor
@@ -21,7 +21,6 @@ public class PlateEntity extends AbstractPersistable<Long> implements Serializab
     private Integer number;
 
     private String state;
-
 
     @Override
     public boolean equals(Object o) {

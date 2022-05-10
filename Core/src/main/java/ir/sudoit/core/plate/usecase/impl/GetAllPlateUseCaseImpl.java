@@ -6,7 +6,6 @@ import ir.sudoit.core.plate.usecase.GetAllPlateUseCase;
 
 import java.util.Collection;
 
-
 public record GetAllPlateUseCaseImpl(PlateRepository repositoryService) implements GetAllPlateUseCase {
 
     @Override

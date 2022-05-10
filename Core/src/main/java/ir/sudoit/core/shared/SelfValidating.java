@@ -1,6 +1,7 @@
 package ir.sudoit.core.shared;
 
-import javax.validation.*;
+import jakarta.validation.*;
+
 import java.util.Set;
 
 public abstract class SelfValidating<T> {

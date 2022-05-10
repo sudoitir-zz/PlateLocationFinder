@@ -1,9 +1,9 @@
 package ir.sudoit.core.plate;
 
 import ir.sudoit.core.shared.SelfValidating;
+import jakarta.validation.constraints.Min;
 import lombok.*;
 
-import javax.validation.constraints.Min;
 import java.io.Serializable;
 
 @Setter
