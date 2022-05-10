@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e0b4e4d3-2823-4224-ad83-c6262bfc52e4" name="Changes" comment="Some Changes in createPlateList">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_24_2022_11_38_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_24_2022_11_38_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_24_2022_1_49_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_24_2022_1_49_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_25_2022_10_38_AM_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_25_2022_10_38_AM__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/Plate.java" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/Plate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/usecase/impl/GetAllPlateUseCaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/plate/usecase/impl/GetAllPlateUseCaseImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/shared/SelfValidating.java" beforeDir="false" afterPath="$PROJECT_DIR$/Core/src/main/java/ir/sudoit/core/shared/SelfValidating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/port/PlateRepositoryTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/GetAllPlateUseCaseImplTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/PlateProvinceFinderUseCaseImplTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/src/test/java/ir/sudoit/core/plate/usecase/impl/UpdateImplTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/persistence/entities/PlateEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/src/main/java/ir/sudoit/infrastructure/persistence/entities/PlateEntity.java" afterDir="false" />
-    </list>
+    <list default="true" id="e0b4e4d3-2823-4224-ad83-c6262bfc52e4" name="Changes" comment="Some Changes in createPlateList" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +26,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="test" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitToolBoxStore">
@@ -308,7 +295,8 @@
     <MESSAGE value="Controller Modified" />
     <MESSAGE value="No Desc" />
     <MESSAGE value="Some Changes in createPlateList" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some Changes in createPlateList" />
+    <MESSAGE value="Some Minor Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Some Minor Changes" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
