@@ -1,6 +1,6 @@
 package ir.sudoit.core.plate;
 
-import ir.sudoit.core.shared.SelfValidating;
+
 import jakarta.validation.constraints.Min;
 import lombok.*;
 
@@ -10,9 +10,9 @@ import java.io.Serializable;
 @Getter
 @ToString
 @RequiredArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode
 @AllArgsConstructor
-public class Plate extends SelfValidating<Plate> implements Serializable {
+public class Plate implements Serializable {
 
     @Min(0)
     private Long id;
